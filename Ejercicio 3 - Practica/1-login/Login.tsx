@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { useAuthStore } from "../2-routes/authStore";
 
 interface LoginForm {
   email: string;
@@ -50,11 +51,7 @@ export const Login = () => {
       }
 
       const user = await res.json();
-
-      // Es mas seguro guardarlo en cookies, y tampoco se si el token es httpOnly o no. Pero como no tengo tiempo lo dejo asi.
-      localStorage.setItem("token", user.token);
-
-      // Guardar token en el estado global. Podriamos utilizar el mismo metodo que en el ejercicio 2 - Estado, pero no tengo tiempo.
+      setUser(user);
     } catch (error) {
       setError("Ocurrió un error inesperado");
     }
