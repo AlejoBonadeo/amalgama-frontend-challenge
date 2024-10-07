@@ -16,7 +16,7 @@ export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const { setUser } = useAuthStore();
+  const { setToken } = useAuthStore();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setError("");
@@ -51,7 +51,7 @@ export const Login = () => {
       }
 
       const user = await res.json();
-      setUser(user);
+      setUser(user.token);
     } catch (error) {
       setError("Ocurrió un error inesperado");
     }

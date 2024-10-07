@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useAuthStore } from "./authStore.ts";
 
 export const PublicRoute = () => {
-  const { user } = useAuthStore();
+  const { token } = useAuthStore();
 
-  return !user ? <Outlet /> : <Navigate to="/home" replace />;
+  return !token ? <Outlet /> : <Navigate to="/home" replace />;
 };
